@@ -21,6 +21,11 @@ gradiente.onload = () => {
   context.fillText("Cabloca", 250, 100);
 };
 
+//cria texto fora do onload
+//const cabocla = document.createElement('p')
+//cabocla.innerHTML = 'Cabocla'
+//context.drawImage(cabocla)
+
 let rating = new Image();
 rating.src = "../assets/icons/Content Rating.png";
 rating.onload = () => {
@@ -44,6 +49,16 @@ rating.onload = () => {
   );
 };
 
+function verificaClick() {
+  if (x > 100 && x < 300 && y > 350 && y < 410) {
+    document
+      .getElementById("canvas")
+      .removeEventListener("click", verificaClick, false);
+    document
+      .getElementById("canvas")
+      .addEventListener("click", verificaClickLevelSelect, false);
+  }
+}
 let play = new Image();
 play.src = "../assets/icons/Play.png";
 play.onload = () => {
@@ -63,10 +78,12 @@ play.onload = () => {
   context.font = "20pt Arial bolder";
   context.fillStyle = "#000000";
   context.fillText("Assista", 185, 425);
+  verificaClick();
 };
 
 let list = new Image();
 list.src = "../assets/icons/add.png";
+
 list.onload = () => {
   context.drawImage(list, 350, 330);
 
@@ -108,4 +125,41 @@ list.onload = () => {
     context.fillStyle = "#000000";
     context.fillText("Capítulos", 580, 425);
   };
+
+  //cria botoes
+  //segundo botao
+  context.beginPath();
+  context.rect(710, 310, 150, 140);
+  context.fillStyle = "#FFFFFF";
+  context.fillStyle = "rgba(225,225,225,0.5)";
+  context.fill();
+  //borda
+  context.lineWidth = 5;
+  context.strokeStyle = "#ec03fc";
+  context.stroke();
+  context.closePath();
+  context.font = "18pt Arial bolder";
+  context.fillStyle = "#000000";
+  context.fillText("Capítulos", 780, 425);
+
+  //conteudo exclusivo
+  context.fillStyle = "#fff";
+  context.fillText("Conteudo exclusivo para assinante globoplay", 330, 525);
+  context.font = "18pt Arial bolder";
+
+  //quadrado teste
+  context.fillStyle = "#03fcd7";
+  context.fillRect(910, 310, 150, 140);
+  //escrita
+  context.fillStyle = "#000000";
+  context.fillText("teste", 980, 425);
+  context.font = "18pt Arial bolder";
+
+  //borda
+  context.lineWidth = 5;
+  context.strokeStyle = "#03fcd7";
+
+  var img = document.createElement("img");
+  img.src = canvas.toDataURL("../assets/icons/Episodes.png");
+  document.body.appendChild(img);
 };
