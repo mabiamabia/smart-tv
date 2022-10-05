@@ -1,33 +1,26 @@
 console.log("Loaded 1.0 version");
-
-// carregar o canvas
 let canvas = document.getElementById("smart");
 let context = canvas.getContext("2d");
 
 let novela = new Image();
-novela.src =
-  "http://s2.glbimg.com/4rW8-QbGuoqeDoSdCnHYQoieZWA=/0x720/filters:quality(40)/https://s2.glbimg.com/O0xgBL5KAay23VHejhPUOznfEAo=/i.s3.glbimg.com/v1/AUTH_c3c606ff68e7478091d1ca496f9c5625/internal_photos/bs/2020/A/S/ZgcMekRSAPYiB5inuMFw/2020-1002-cabocla-background.jpg";
+novela.src = "./componentes/assets/img/cabocla.webp";
 novela.onload = () => {
   context.drawImage(novela, 0, 0);
 };
 
 let gradiente = new Image();
-gradiente.src = "../assets/img/Gradient.png";
+gradiente.src = "./componentes/assets/img/Gradient.png";
 gradiente.onload = () => {
   context.drawImage(gradiente, -1, -1);
+  //Título
   context.font = "5em Arial bolder";
   context.fillStyle = "white";
   context.textAlign = "center";
   context.fillText("Cabloca", 250, 100);
 };
 
-//cria texto fora do onload
-//const cabocla = document.createElement('p')
-//cabocla.innerHTML = 'Cabocla'
-//context.drawImage(cabocla)
-
 let rating = new Image();
-rating.src = "../assets/icons/Content Rating.png";
+rating.src = "../code/componentes/assets/icons/Content_Rating.png";
 rating.onload = () => {
   context.drawImage(rating, 125, 120);
 
@@ -35,6 +28,7 @@ rating.onload = () => {
   context.font = "1.2em Arial bolder";
   context.fillStyle = "white";
   context.textAlign = "right";
+  context.textAlign = "center";
   context.fillText("Novela  Drama  2004", 330, 140);
 
   //adiciona texto
@@ -42,124 +36,132 @@ rating.onload = () => {
   context.fillStyle = "white";
   context.textAlign = "left";
   context.fillText(
-    "Ambientada em Vila da Mata, em 1918," +
-      "a trama gira em torno da disputa por terras",
+    "Ambientada em Vila da Mata, em 1918, " + "a trama gira em torno da",
     120,
     190
   );
+  context.fillText(
+    "disputa por terras entre dois coronéis e do amor entre Luís ",
+    120,
+    215
+  );
+  context.fillText(
+    "Jerônimo e a cabocla Zuca, noiva do destemido Tobias.",
+    120,
+    240
+  );
 };
 
-function verificaClick() {
-  if (x > 100 && x < 300 && y > 350 && y < 410) {
-    document
-      .getElementById("canvas")
-      .removeEventListener("click", verificaClick, false);
-    document
-      .getElementById("canvas")
-      .addEventListener("click", verificaClickLevelSelect, false);
-  }
-}
 let play = new Image();
-play.src = "../assets/icons/Play.png";
+play.src = "./componentes/assets/icons/Play.png";
 play.onload = () => {
-  context.drawImage(play, 190, 345);
-  //cria botoes
+  context.drawImage(play, 170, 305);
+
   context.beginPath();
-  //primeiro botao
-  context.rect(110, 310, 150, 140);
-  context.fillStyle = "#FFFFFF";
+
+  context.rect(120, 280, 110, 110);
   context.fillStyle = "rgba(225,225,225,0.5)";
   context.fill();
+
+  context.font = "14pt Arial bolder";
+  context.fillStyle = "#000000";
+  context.fillText("Assista", 140, 370);
+  context.textAlign = "left";
   //borda
   context.lineWidth = 5;
-  context.strokeStyle = "#ff3";
+  context.strokeStyle = "rgba(225,225,225,0.5)";
   context.stroke();
   context.closePath();
-  context.font = "20pt Arial bolder";
-  context.fillStyle = "#000000";
-  context.fillText("Assista", 185, 425);
-  verificaClick();
+};
+
+let lock = new Image();
+lock.src = "./componentes/assets/icons/Lock.png";
+lock.onload = () => {
+  context.drawImage(lock, 120, 406);
+  //conteudo exclusivo
+  context.fillStyle = "#fff";
+  context.fillText("Conteudo exclusivo para assinantes Globoplay", 145, 425);
+  context.font = "12pt Arial";
+  context.textAlign = "center";
 };
 
 let list = new Image();
-list.src = "../assets/icons/add.png";
+list.src = "./componentes/assets/icons/add.png";
 
 list.onload = () => {
-  context.drawImage(list, 350, 330);
+  context.drawImage(list, 280, 290);
 
-  //cria botoes
   //segundo botao
   context.beginPath();
-  context.rect(310, 310, 150, 140);
+  context.rect(260, 280, 110, 110);
   context.fillStyle = "#FFFFFF";
   context.fillStyle = "rgba(225,225,225,0.5)";
   context.fill();
   //borda
   context.lineWidth = 5;
-  context.strokeStyle = "#f54242";
+  context.strokeStyle = "rgba(225,225,225,0.5)";
+  context.font = "14pt Arial bolder";
+  context.fillStyle = "#000000";
+  context.fillText("Minha Lista", 310, 370);
+  context.textAlign = "left";
   context.stroke();
   context.closePath();
-  context.font = "18pt Arial bolder";
-  context.fillStyle = "#000000";
-  context.fillText("Minha Lista", 385, 425);
-  // };
+};
 
-  let episodes = new Image();
-  episodes.src = "../assets/icons/Episodes.png";
-  episodes.onload = () => {
-    context.drawImage(episodes, 570, 350);
+let episodes = new Image();
+episodes.src = "./componentes/assets/icons/Episodes.png";
+episodes.onload = () => {
+  context.drawImage(episodes, 440, 310);
 
-    //cria botoes
-    //segundo botao
-    context.beginPath();
-    context.rect(510, 310, 150, 140);
-    context.fillStyle = "#FFFFFF";
-    context.fillStyle = "rgba(225,225,225,0.5)";
-    context.fill();
-    //borda
-    context.lineWidth = 5;
-    context.strokeStyle = "#216bd1";
-    context.stroke();
-    context.closePath();
-    context.font = "18pt Arial bolder";
-    context.fillStyle = "#000000";
-    context.fillText("Capítulos", 580, 425);
-  };
-
-  //cria botoes
-  //segundo botao
+  //capitulos
   context.beginPath();
-  context.rect(710, 310, 150, 140);
+  context.rect(400, 280, 110, 110);
   context.fillStyle = "#FFFFFF";
   context.fillStyle = "rgba(225,225,225,0.5)";
   context.fill();
   //borda
   context.lineWidth = 5;
-  context.strokeStyle = "#ec03fc";
+  context.strokeStyle = "rgba(225,225,225,0.5)";
+  context.font = "14pt Arial bolder";
+  context.fillStyle = "#000000";
+  context.fillText("Capítulos", 450, 370);
+  context.textAlign = "center";
   context.stroke();
   context.closePath();
-  context.font = "18pt Arial bolder";
-  context.fillStyle = "#000000";
-  context.fillText("Capítulos", 780, 425);
 
-  //conteudo exclusivo
+};
+
+//detalhes
+let detalhes = new Image();
+detalhes.src = "./componentes/assets/icons/Content_Rating.png";
+
+detalhes.onload = () => {
+  context.drawImage(detalhes, 120, 600);
+
   context.fillStyle = "#fff";
-  context.fillText("Conteudo exclusivo para assinante globoplay", 330, 525);
-  context.font = "18pt Arial bolder";
+  context.fillText("Detalhes", 120, 550);
+  context.font = "14pt Arial bolder";
+  context.textAlign = "left";
 
-  //quadrado teste
-  context.fillStyle = "#03fcd7";
-  context.fillRect(910, 310, 150, 140);
-  //escrita
-  context.fillStyle = "#000000";
-  context.fillText("teste", 980, 425);
-  context.font = "18pt Arial bolder";
-
+  //retangulo maior
+  context.beginPath();
+  context.rect(110, 560, 1050, 140);
+  context.fillStyle = "#FFFFFF";
+  context.fillStyle = "rgba(0,0,0,0.8)";
+  context.fill();
   //borda
   context.lineWidth = 5;
-  context.strokeStyle = "#03fcd7";
-
-  var img = document.createElement("img");
-  img.src = canvas.toDataURL("../assets/icons/Episodes.png");
-  document.body.appendChild(img);
+  context.strokeStyle = "rgba(225,225,225,0.5)";
+  context.stroke();
+  context.closePath();
+  
+  context.font = "14pt Arial bolder";
+  context.fillStyle = "white";
+  context.textAlign = "left";
+  context.fillText("Título original Cabloca", 130, 590);
+  context.fillText("Não há inadequações", 160, 620);
+  context.fillText("Genero Drama", 890, 590);
+  context.fillText("Ano de Lançamento 2004", 890, 620);
+  context.fillText("País Brasil", 890, 650);
+  context.fillText("Sinopse ", 890, 680);
 };
